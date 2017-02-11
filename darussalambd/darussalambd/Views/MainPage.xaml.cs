@@ -7,6 +7,7 @@ namespace darussalambd.Views
         public MainPage()
         {
             InitializeComponent();
+
         }
     }
 }
