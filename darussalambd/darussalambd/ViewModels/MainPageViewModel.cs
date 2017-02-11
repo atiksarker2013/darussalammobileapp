@@ -4,6 +4,7 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 
 namespace darussalambd.ViewModels
 {
@@ -16,9 +17,40 @@ namespace darussalambd.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
+
+        private string _email;
+        public string Email
+        {
+            get { return _email; }
+            set { SetProperty(ref _email, value); }
+        }
+
+        private string _password;
+        public string Password
+        {
+            get { return _password; }
+            set { SetProperty(ref _password, value); }
+        }
+
+        public ICommand LoginCommand { protected set; get; }
+        public ICommand SignupCommand { protected set; get; }
+
         public MainPageViewModel()
         {
+            LoginCommand = new DelegateCommand(OnLoginCommand);
+            SignupCommand = new DelegateCommand(OnSignupCommand);
+        }
 
+        private async void OnSignupCommand()
+        {
+            await App.Current.MainPage.DisplayAlert("Test Title", "Test", "OK");
+            //   DisplayAlert("Hello","", "Ok");
+            //  MessageCenter.Send(this, "MyAlertName", "My actual alert content, or an object if you want")
+        }
+
+        private void OnLoginCommand()
+        {
+          //  throw new NotImplementedException();
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
