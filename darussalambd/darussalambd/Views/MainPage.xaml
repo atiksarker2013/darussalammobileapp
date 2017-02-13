@@ -35,6 +35,7 @@
             <Entry
                 Grid.Row="2"
                 Grid.Column="0"
+                IsPassword="True"
                 Placeholder="Password"
                 Text="{Binding Password}" />
 

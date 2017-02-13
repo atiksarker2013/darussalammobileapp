@@ -1,9 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Input;
 
 namespace darussalambd.ViewModels
@@ -44,8 +41,7 @@ namespace darussalambd.ViewModels
         private async void OnSignupCommand()
         {
             await App.Current.MainPage.DisplayAlert("Test Title", "Test", "OK");
-            //   DisplayAlert("Hello","", "Ok");
-            //  MessageCenter.Send(this, "MyAlertName", "My actual alert content, or an object if you want")
+            
         }
 
         private void OnLoginCommand()
