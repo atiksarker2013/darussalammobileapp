@@ -27,7 +27,12 @@ namespace Plugin.RestClient
             return taskModels;
         }
 
-        public async Task<bool> PostAsync(T t)
+        //internal Task PostAsync(string url)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public async Task<bool> PostAsync(T t, string url)
         {
             var httpClient = new HttpClient();
 
@@ -37,7 +42,7 @@ namespace Plugin.RestClient
 
             httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            var result = await httpClient.PostAsync(WebServiceUrl, httpContent);
+            var result = await httpClient.PostAsync(WebServiceUrl+ url, httpContent);
 
             return result.IsSuccessStatusCode;
         }

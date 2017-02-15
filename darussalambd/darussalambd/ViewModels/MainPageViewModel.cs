@@ -7,11 +7,13 @@ using System.Windows.Input;
 using System;
 using System.Threading.Tasks;
 using darussalambd.Services;
+using System.Linq;
 
 namespace darussalambd.ViewModels
 {
     public class MainPageViewModel : BindableBase, INavigationAware
     {
+        string cont = "tbl_DarussalamMobileUser";
         private string _title;
         public string Title
         {
@@ -66,20 +68,45 @@ namespace darussalambd.ViewModels
 
         private async Task  LoadAllUserAsyn()
         {
-            string cont = "tbl_DarussalamMobileUser";
             var _loginService = new LoginServices();
             SelectedUserList = await _loginService.GetUsersAsync(cont);
         }
 
         private async void OnSignupCommand()
         {
-            await App.Current.MainPage.DisplayAlert("Test Title", "Test", "OK");
+            var item = SelectedUserList.FirstOrDefault(x => x.EmailAddress == Email);
+            if (item == null)
+            {
+                SelectedUser = new Models.tbl_DarussalamMobileUser();
+                SelectedUser.EmailAddress = Email;
+                SelectedUser.Password = Password;
+                SelectedUser.IsActive = true;
+                SelectedUser.EntryDate = DateTime.Now;
+                var _loginService = new LoginServices();
+                await _loginService.PostUserAsync(SelectedUser, cont);
+                await App.Current.MainPage.DisplayAlert("Registration", "Thank you for your registration.", "OK");
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Registration", "This User Already Exist, Please login.", "OK");
+            }
+          
             
         }
 
-        private void OnLoginCommand()
+        private async void OnLoginCommand()
         {
-          //  throw new NotImplementedException();
+          
+            var item = SelectedUserList.FirstOrDefault(x => x.EmailAddress == Email && x.Password == Password);
+            if (item == null)
+            {
+                await App.Current.MainPage.DisplayAlert("Login", "Please enter your correct email and password.", "OK");
+            }
+            else
+            {
+                //notify the user
+            }
+
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)

@@ -25,19 +25,21 @@
 
                 <RowDefinition Height="5" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <Entry
                 Grid.Row="0"
                 Grid.Column="0"
                 Placeholder="Email"
-                Text="{Binding SelectedUsersword.EmailAddress}" />
+                Text="{Binding Email}" />
             <Entry
                 Grid.Row="2"
                 Grid.Column="0"
                 IsPassword="True"
                 Placeholder="Password"
-                Text="{Binding SelectedUsersword.Password}" />
+                Text="{Binding Password}" />
 
 
 
@@ -51,6 +53,18 @@
                 Grid.Column="0"
                 Command="{Binding SignupCommand}"
                 Text="Sign Up" />
+
+
+            <!--<StackLayout
+                Grid.Row="8"
+                Grid.Column="0"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+
+                <Image Source="logo.jpeg" />
+
+            </StackLayout>-->
+
 
 
             <!--<Label Grid.Row="0" Grid.Column="0" Text="{Binding Title}" />-->
