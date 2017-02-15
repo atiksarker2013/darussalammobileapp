@@ -1,7 +1,12 @@
-﻿using Prism.Commands;
+﻿using darussalambd.Models;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using System.Collections.Generic;
 using System.Windows.Input;
+using System;
+using System.Threading.Tasks;
+using darussalambd.Services;
 
 namespace darussalambd.ViewModels
 {
@@ -29,6 +34,26 @@ namespace darussalambd.ViewModels
             set { SetProperty(ref _password, value); }
         }
 
+        private tbl_DarussalamMobileUser _selectedUser;
+        public tbl_DarussalamMobileUser SelectedUser
+        {
+            get { return _selectedUser; }
+            set { SetProperty(ref _selectedUser, value); }
+        }
+
+        private List<tbl_DarussalamMobileUser> _selectedUserList;
+        public List<tbl_DarussalamMobileUser> SelectedUserList
+        {
+            get { return _selectedUserList; }
+            set { SetProperty(ref _selectedUserList, value); }
+        }
+
+        
+
+
+
+
+
         public ICommand LoginCommand { protected set; get; }
         public ICommand SignupCommand { protected set; get; }
 
@@ -36,6 +61,14 @@ namespace darussalambd.ViewModels
         {
             LoginCommand = new DelegateCommand(OnLoginCommand);
             SignupCommand = new DelegateCommand(OnSignupCommand);
+            LoadAllUserAsyn();
+        }
+
+        private async Task  LoadAllUserAsyn()
+        {
+            string cont = "tbl_DarussalamMobileUser";
+            var _loginService = new LoginServices();
+            SelectedUserList = await _loginService.GetUsersAsync(cont);
         }
 
         private async void OnSignupCommand()

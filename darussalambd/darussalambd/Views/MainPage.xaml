@@ -31,13 +31,13 @@
                 Grid.Row="0"
                 Grid.Column="0"
                 Placeholder="Email"
-                Text="{Binding Email}" />
+                Text="{Binding SelectedUsersword.EmailAddress}" />
             <Entry
                 Grid.Row="2"
                 Grid.Column="0"
                 IsPassword="True"
                 Placeholder="Password"
-                Text="{Binding Password}" />
+                Text="{Binding SelectedUsersword.Password}" />
 
 
 
