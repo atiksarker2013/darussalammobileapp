@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="darussalambd.Views.KarimBooks"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True">
+
+
+    <ListView
+        x:Name="listview"
+        ItemsSource="{Binding Path=SelectedBookList}"
+        RowHeight="100"
+        SelectedItem="{Binding SelectedBook, Mode=TwoWay}">
+
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Padding="5" Orientation="Vertical">
+                        <StackLayout BackgroundColor="#FFCDCD2B" Orientation="Horizontal">
+                            <Image
+                                HeightRequest="100"
+                                Source="{Binding Image}"
+                                WidthRequest="100" />
+
+                            <StackLayout Orientation="Vertical">
+
+                                <Label
+                                    FontSize="Small"
+                                    Text="{Binding Title}"
+                                    TextColor="White" />
+
+                                <Label
+                                    FontSize="Micro"
+                                    Text="{Binding Description}"
+                                    TextColor="White" />
+                            </StackLayout>
+
+                            <Label
+                                FontSize="12"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="End"
+                                Text="{Binding Price}"
+                                TextColor="Aqua"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="60" />
+                            <Label
+                                FontSize="Micro"
+                                HorizontalOptions="Center"
+                                Text="$"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="5" />
+                            <Button
+                                BackgroundColor="Transparent"
+                                Command="{Binding AddToCartCommand}"
+                                CommandParameter="{Binding Title}"
+                                Image="cart.png"
+                                WidthRequest="50" />
+                        </StackLayout>
+
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

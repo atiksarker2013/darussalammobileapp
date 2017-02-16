@@ -8,11 +8,13 @@ using System;
 using System.Threading.Tasks;
 using darussalambd.Services;
 using System.Linq;
+using Prism.Events;
 
 namespace darussalambd.ViewModels
 {
     public class MainPageViewModel : BindableBase, INavigationAware
     {
+        INavigationService _navigationService;
         string cont = "tbl_DarussalamMobileUser";
         private string _title;
         public string Title
@@ -50,18 +52,39 @@ namespace darussalambd.ViewModels
             set { SetProperty(ref _selectedUserList, value); }
         }
 
-        
 
 
+        //private string _title = "MainPage";
+        //public string Title
+        //{
+        //    get { return _title; }
+        //    set { SetProperty(ref _title, value); }
+        //}
+
+        private bool _isActive = false;
+        public bool IsActive
+        {
+            get { return _isActive; }
+            set
+            {
+
+                SetProperty(ref _isActive, value);
+            }
+        }
 
 
 
         public ICommand LoginCommand { protected set; get; }
         public ICommand SignupCommand { protected set; get; }
 
-        public MainPageViewModel()
+        public MainPageViewModel(INavigationService navigationService, IEventAggregator ea)
         {
-            LoginCommand = new DelegateCommand(OnLoginCommand);
+            _navigationService = navigationService;
+           LoginCommand = new DelegateCommand(OnLoginCommand);
+
+         //   LoginCommand = new DelegateCommand(OnLoginCommand).ObservesCanExecute((p) => IsActive);
+          //  ea.GetEvent<MyEvent>().Subscribe(Handled);
+
             SignupCommand = new DelegateCommand(OnSignupCommand);
             LoadAllUserAsyn();
         }
@@ -104,7 +127,8 @@ namespace darussalambd.ViewModels
             }
             else
             {
-                //notify the user
+             //   _navigationService = new 
+                _navigationService.NavigateAsync("KarimBooks");
             }
 
         }

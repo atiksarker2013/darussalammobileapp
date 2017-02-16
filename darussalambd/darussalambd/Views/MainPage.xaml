@@ -46,13 +46,31 @@
             <Button
                 Grid.Row="4"
                 Grid.Column="0"
+                BackgroundColor="Transparent"
+                BorderColor="Maroon"
+                BorderRadius="50"
+                BorderWidth="1"
                 Command="{Binding LoginCommand}"
-                Text="Login" />
+                FontSize="12"
+                HorizontalOptions="Center"
+                Text="Login"
+                TextColor="Maroon"
+                VerticalOptions="Center"
+                WidthRequest="200" />
             <Button
                 Grid.Row="6"
                 Grid.Column="0"
+                BackgroundColor="Transparent"
+                BorderColor="Maroon"
+                BorderRadius="50"
+                BorderWidth="1"
                 Command="{Binding SignupCommand}"
-                Text="Sign Up" />
+                FontSize="12"
+                HorizontalOptions="Center"
+                Text="Sign Up"
+                TextColor="Maroon"
+                VerticalOptions="Center"
+                WidthRequest="200" />
 
 
             <!--<StackLayout

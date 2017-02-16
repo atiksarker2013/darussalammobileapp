@@ -2,13 +2,12 @@
 
 namespace darussalambd.Views
 {
-    public partial class MainPage : ContentPage
+    public partial class KarimBooks : ContentPage
     {
-        public MainPage()
+        public KarimBooks()
         {
             InitializeComponent();
             this.BackgroundImage = "background.png";
-
         }
     }
 }
