@@ -119,7 +119,9 @@ namespace darussalambd.ViewModels
 
         private async void OnLoginCommand()
         {
-          
+            var _loginService = new LoginServices();
+            SelectedUserList = await _loginService.GetUsersAsync(cont);
+
             var item = SelectedUserList.FirstOrDefault(x => x.EmailAddress == Email && x.Password == Password);
             if (item == null)
             {
@@ -130,6 +132,8 @@ namespace darussalambd.ViewModels
              //   _navigationService = new 
                 _navigationService.NavigateAsync("KarimBooks");
             }
+
+           // _navigationService.NavigateAsync("KarimBooks");
 
         }
 

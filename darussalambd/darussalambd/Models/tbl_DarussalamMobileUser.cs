@@ -11,8 +11,8 @@ namespace darussalambd.Models
         public int Id { get; set; }
         public string EmailAddress { get; set; }
         public string Password { get; set; }
-        public DateTime EntryDate { get; set; }
+        public DateTime? EntryDate { get; set; }
 
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
     }
 }

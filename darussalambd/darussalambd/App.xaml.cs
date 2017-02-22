@@ -18,6 +18,7 @@ namespace darussalambd
         {
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<KarimBooks>();
+            Container.RegisterTypeForNavigation<BookDetails>();
         }
     }
 }

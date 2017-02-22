@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace darussalambd.ViewModels
 {
@@ -28,11 +29,23 @@ namespace darussalambd.ViewModels
             set { SetProperty(ref _selectedBook, value); }
         }
 
-        public ICommand AddToCartCommand { protected set; get; }
+       // public ICommand AddToCartCommand { protected set; get; }
+
+        public ICommand AddToCartCommand
+        {
+            get
+            {
+                return new Command((e) =>
+                {
+                    var item = (e as tbl_DarusSalamBook);
+                    // delete logic on item
+                });
+            }
+        }
 
         public KarimBooksViewModel()
         {
-            AddToCartCommand = new DelegateCommand(OnAddToCartCommand);
+            // AddToCartCommand = new DelegateCommand(OnAddToCartCommand);
             LoadAllBookAsyn();
         }
 
@@ -58,5 +71,6 @@ namespace darussalambd.ViewModels
         {
           //  throw new NotImplementedException();
         }
+
     }
 }

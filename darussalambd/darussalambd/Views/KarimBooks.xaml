@@ -8,7 +8,7 @@
 
 
     <ListView
-        x:Name="listview"
+        x:Name="booklistview"
         ItemsSource="{Binding Path=SelectedBookList}"
         RowHeight="100"
         SelectedItem="{Binding SelectedBook, Mode=TwoWay}">
@@ -17,49 +17,57 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <StackLayout Padding="5" Orientation="Vertical">
-                        <StackLayout BackgroundColor="#FFCDCD2B" Orientation="Horizontal">
-                            <Image
-                                HeightRequest="100"
-                                Source="{Binding Image}"
-                                WidthRequest="100" />
+                    <ViewCell.View>
 
-                            <StackLayout Orientation="Vertical">
+                        <Grid x:Name="Item">
 
-                                <Label
-                                    FontSize="Small"
-                                    Text="{Binding Title}"
-                                    TextColor="White" />
+                            <StackLayout Padding="5" Orientation="Vertical">
+                                <StackLayout BackgroundColor="#FFCDCD2B" Orientation="Horizontal">
+                                    <Image
+                                        HeightRequest="100"
+                                        Source="{Binding Image}"
+                                        WidthRequest="100" />
 
-                                <Label
-                                    FontSize="Micro"
-                                    Text="{Binding Description}"
-                                    TextColor="White" />
+                                    <StackLayout Orientation="Vertical">
+
+                                        <Label
+                                            FontSize="Small"
+                                            Text="{Binding Title}"
+                                            TextColor="White" />
+
+                                        <Label
+                                            FontSize="Micro"
+                                            Text="{Binding Description}"
+                                            TextColor="White" />
+                                    </StackLayout>
+
+                                    <Label
+                                        FontSize="12"
+                                        HorizontalOptions="Center"
+                                        HorizontalTextAlignment="End"
+                                        Text="{Binding Price}"
+                                        TextColor="Aqua"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="60" />
+                                    <Label
+                                        FontSize="Micro"
+                                        HorizontalOptions="Center"
+                                        Text="$"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="5" />
+                                    <!--<Button
+                                        BackgroundColor="Transparent"
+                                        BindingContext="{Binding Source={x:Reference booklistview}, Path=BindingContext}"
+                                        Command="{Binding AddToCartCommand}"
+                                        CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"
+                                        Image="cart.png"
+                                        WidthRequest="50" />-->
+                                </StackLayout>
                             </StackLayout>
 
-                            <Label
-                                FontSize="12"
-                                HorizontalOptions="Center"
-                                HorizontalTextAlignment="End"
-                                Text="{Binding Price}"
-                                TextColor="Aqua"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="60" />
-                            <Label
-                                FontSize="Micro"
-                                HorizontalOptions="Center"
-                                Text="$"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="5" />
-                            <Button
-                                BackgroundColor="Transparent"
-                                Command="{Binding AddToCartCommand}"
-                                CommandParameter="{Binding Title}"
-                                Image="cart.png"
-                                WidthRequest="50" />
-                        </StackLayout>
+                        </Grid>
 
-                    </StackLayout>
+                    </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
