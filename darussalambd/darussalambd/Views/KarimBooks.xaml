@@ -5,9 +5,26 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     prism:ViewModelLocator.AutowireViewModel="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+            
+        </Grid.RowDefinitions>
+        <SearchBar Text="{Binding SearchText}"
+                     Grid.Row="1"
+                     Grid.Column="0"
+                     SearchCommand="{Binding SearchCommand}"/>
 
 
-    <ListView
+        <ListView
+         Grid.Row="3"
+                Grid.Column="0"
         x:Name="booklistview"
         ItemsSource="{Binding Path=SelectedBookList}"
         RowHeight="100"
@@ -35,10 +52,27 @@
                                             Text="{Binding Title}"
                                             TextColor="White" />
 
-                                        <Label
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label
                                             FontSize="Micro"
-                                            Text="{Binding Description}"
-                                            TextColor="White" />
+                                            Text="Author:"
+                                            TextColor="Maroon" />
+                                            <Label
+                                            FontSize="Micro"
+                                            Text="{Binding Writer}"
+                                            TextColor="Maroon" />
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label
+                                            FontSize="Micro"
+                                            Text="Publisher:"
+                                            TextColor="Red" />
+                                            <Label
+                                            FontSize="Micro"
+                                            Text="{Binding Publisher}"
+                                            TextColor="Red" />
+                                        </StackLayout>
                                     </StackLayout>
 
                                     <Label
@@ -46,15 +80,15 @@
                                         HorizontalOptions="Center"
                                         HorizontalTextAlignment="End"
                                         Text="{Binding Price}"
-                                        TextColor="Aqua"
+                                        TextColor="Purple"
                                         VerticalOptions="CenterAndExpand"
-                                        WidthRequest="60" />
+                                        WidthRequest="70" />
                                     <Label
                                         FontSize="Micro"
                                         HorizontalOptions="Center"
-                                        Text="$"
+                                        Text="Tk"
                                         VerticalOptions="CenterAndExpand"
-                                        WidthRequest="5" />
+                                        WidthRequest="8" />
                                     <!--<Button
                                         BackgroundColor="Transparent"
                                         BindingContext="{Binding Source={x:Reference booklistview}, Path=BindingContext}"
@@ -72,4 +106,6 @@
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
+
+    </Grid>
 </ContentPage>

@@ -5,6 +5,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -14,6 +15,17 @@ namespace darussalambd.ViewModels
 {
     public class KarimBooksViewModel : BindableBase, INavigationAware
     {
+        
+ 
+
+
+        private string _searchText;
+        public string SearchText
+        {
+            get { return _searchText; }
+            set { SetProperty(ref _searchText, value); }
+        }
+
 
         private List<tbl_DarusSalamBook> _selectedBookList;
         public List<tbl_DarusSalamBook> SelectedBookList
@@ -29,23 +41,53 @@ namespace darussalambd.ViewModels
             set { SetProperty(ref _selectedBook, value); }
         }
 
-       // public ICommand AddToCartCommand { protected set; get; }
+        private ObservableCollection<tbl_DarusSalamBook> _searchList;
 
-        public ICommand AddToCartCommand
+        public ObservableCollection<tbl_DarusSalamBook> SearchList
+
         {
+
             get
+
             {
-                return new Command((e) =>
+
+                ObservableCollection<tbl_DarusSalamBook> theCollection = new ObservableCollection<tbl_DarusSalamBook>();
+
+
+
+
+                if (SelectedBookList != null)
+
                 {
-                    var item = (e as tbl_DarusSalamBook);
-                    // delete logic on item
-                });
+
+                    List<tbl_DarusSalamBook> entities = (from e in SelectedBookList
+                                                         where e.Publisher.Contains(_searchText)
+                                                         select e).ToList<tbl_DarusSalamBook>();
+
+                    if (entities != null && entities.Any())
+
+                    {
+                        theCollection = new ObservableCollection<tbl_DarusSalamBook>(entities);
+                    }
+
+                }
+
+                return theCollection;
             }
+
         }
+
+
+        
+
+
+        public ICommand SearchCommand { protected set; get; }
+
+      
 
         public KarimBooksViewModel()
         {
-            // AddToCartCommand = new DelegateCommand(OnAddToCartCommand);
+            SearchCommand = new DelegateCommand(OnSearchCommand);
             LoadAllBookAsyn();
         }
 
@@ -57,7 +99,7 @@ namespace darussalambd.ViewModels
             SelectedBookList = await _loginService.GetUsersAsync(cont);
         }
 
-        private void OnAddToCartCommand()
+        private void OnSearchCommand()
         {
           //  throw new NotImplementedException();
         }
