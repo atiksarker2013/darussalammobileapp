@@ -1,6 +1,7 @@
 ﻿using darussalambd.Models;
 using darussalambd.Services;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -15,9 +16,9 @@ namespace darussalambd.ViewModels
 {
     public class KarimBooksViewModel : BindableBase, INavigationAware
     {
-        
- 
 
+
+        INavigationService _navigationService;
 
         private string _searchText;
         public string SearchText
@@ -38,7 +39,15 @@ namespace darussalambd.ViewModels
         public tbl_DarusSalamBook SelectedBook
         {
             get { return _selectedBook; }
-            set { SetProperty(ref _selectedBook, value); }
+            set {
+                    SetProperty(ref _selectedBook, value);
+                if (_selectedBook!=null)
+                {
+                    var p = new NavigationParameters();
+                    p.Add("id", SelectedBook.Id);
+                    _navigationService.NavigateAsync("BookDetails",p);
+                }
+                }
         }
 
         private ObservableCollection<tbl_DarusSalamBook> _searchList;
@@ -85,8 +94,10 @@ namespace darussalambd.ViewModels
 
       
 
-        public KarimBooksViewModel()
+        public KarimBooksViewModel(INavigationService navigationService, IEventAggregator ea)
         {
+
+            _navigationService = navigationService;
             SearchCommand = new DelegateCommand(OnSearchCommand);
             LoadAllBookAsyn();
         }

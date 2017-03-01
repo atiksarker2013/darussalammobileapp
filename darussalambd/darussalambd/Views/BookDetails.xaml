@@ -4,4 +4,74 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-    prism:ViewModelLocator.AutowireViewModel="True" />
+    prism:ViewModelLocator.AutowireViewModel="True" >
+
+
+
+
+    <StackLayout Spacing="10" x:Name="layout"
+               Padding="10"
+               >
+        <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+
+        <!--<Image
+       x:Name="Image"
+         Source="food.png"
+        WidthRequest="200"
+         HeightRequest="200"
+                    
+               />-->
+        <StackLayout  BackgroundColor="#f2e6d9" Padding="10" >
+            <StackLayout Orientation="Horizontal"   HorizontalOptions ="Fill" BackgroundColor="#f2e6d9" Padding="10" >
+
+                <Label      x:Name="Name"
+                     Text="Food Name"
+                      FontSize="Medium"
+                    TextColor="Maroon"
+                />
+
+                <Label
+           x:Name="Price"
+          Text="$10"
+          HorizontalOptions="Center"
+          VerticalOptions="CenterAndExpand"
+          FontSize="Small"
+           WidthRequest="50"
+         TextColor="Gray"
+            />
+
+            </StackLayout>
+
+
+            <Label  x:Name="Description"
+          Text=""
+          FontSize="Small"
+              TextColor="Black"
+                />
+            <StackLayout Orientation="Horizontal"   HorizontalOptions ="Center" VerticalOptions="Center" >
+                <Label
+          Text="Select Quantity"
+          FontSize="Micro"
+          TextColor="Maroon"
+          HorizontalOptions ="Center" VerticalOptions="Center"
+      />
+                <Entry
+          x:Name="Qty"
+          Text="1"
+          Keyboard="Numeric"
+          WidthRequest="50"
+          BackgroundColor="#DBDBDB"
+          FontSize="Small"
+          TextColor="Black"
+        
+        />
+                <Button
+        Text="Add Cart"
+      
+      />
+            </StackLayout>
+        </StackLayout>
+
+    </StackLayout>
+
+    </ContentPage>
