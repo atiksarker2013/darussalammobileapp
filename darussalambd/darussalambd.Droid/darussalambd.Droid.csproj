@@ -155,6 +155,7 @@
     <Content Include="Properties\AndroidManifest.xml" />
     <AndroidResource Include="Resources\drawable\cart.png" />
     <AndroidResource Include="Resources\drawable\background.png" />
+    <AndroidResource Include="Resources\drawable\book.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\darussalambd\darussalambd.csproj">
