@@ -43,9 +43,14 @@ namespace darussalambd.ViewModels
                     SetProperty(ref _selectedBook, value);
                 if (_selectedBook!=null)
                 {
-                    var p = new NavigationParameters();
-                    p.Add("id", SelectedBook.Id);
-                    _navigationService.NavigateAsync("BookDetails",p);
+                    var book = new NavigationParameters();
+                    book.Add("id", SelectedBook.Id);
+                    book.Add("title", SelectedBook.Title);
+                    book.Add("author", SelectedBook.Writer);
+                    book.Add("publisher", SelectedBook.Publisher);
+                    book.Add("description", SelectedBook.Description);
+                    book.Add("price", SelectedBook.Price);
+                    _navigationService.NavigateAsync("BookDetails", book);
                 }
                 }
         }

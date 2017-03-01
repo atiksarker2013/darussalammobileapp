@@ -7,6 +7,7 @@ namespace darussalambd.Views
         public BookDetails()
         {
             InitializeComponent();
+            this.BackgroundImage = "background.png";
         }
     }
 }

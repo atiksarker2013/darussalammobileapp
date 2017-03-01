@@ -6,33 +6,30 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     prism:ViewModelLocator.AutowireViewModel="True" >
 
-
-
-
     <StackLayout Spacing="10" x:Name="layout"
                Padding="10"
                >
         <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
 
-        <!--<Image
+        <Image
        x:Name="Image"
          Source="food.png"
         WidthRequest="200"
          HeightRequest="200"
                     
-               />-->
+               />
         <StackLayout  BackgroundColor="#f2e6d9" Padding="10" >
             <StackLayout Orientation="Horizontal"   HorizontalOptions ="Fill" BackgroundColor="#f2e6d9" Padding="10" >
 
                 <Label      x:Name="Name"
-                     Text="Food Name"
+                     Text="{Binding Title}"
                       FontSize="Medium"
                     TextColor="Maroon"
                 />
 
                 <Label
            x:Name="Price"
-          Text="$10"
+          Text="{Binding Price}"
           HorizontalOptions="Center"
           VerticalOptions="CenterAndExpand"
           FontSize="Small"
@@ -40,11 +37,37 @@
          TextColor="Gray"
             />
 
+               
+
             </StackLayout>
 
 
+            <StackLayout Orientation="Horizontal">
+                <Label
+                                            FontSize="Micro"
+                                            Text="Author:"
+                                            TextColor="Maroon" />
+                <Label
+                                            FontSize="Micro"
+                                            Text="{Binding Writer}"
+                                            TextColor="Maroon" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label
+                                            FontSize="Micro"
+                                            Text="Publisher:"
+                                            TextColor="Red" />
+                <Label
+                                            FontSize="Micro"
+                                            Text="{Binding Publisher}"
+                                            TextColor="Red" />
+            </StackLayout>
+
+
+
             <Label  x:Name="Description"
-          Text=""
+          Text="{Binding Description}"
           FontSize="Small"
               TextColor="Black"
                 />
@@ -67,11 +90,12 @@
         />
                 <Button
         Text="Add Cart"
-      
+        
       />
             </StackLayout>
         </StackLayout>
 
     </StackLayout>
 
-    </ContentPage>
+
+</ContentPage>
