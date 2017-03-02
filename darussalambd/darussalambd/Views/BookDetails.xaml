@@ -90,7 +90,7 @@
         />
                 <Button
         Text="Add Cart"
-        
+        Command="{Binding AddToCartCommand}"
       />
             </StackLayout>
         </StackLayout>

@@ -1,6 +1,9 @@
 ﻿using System;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Prism.Events;
+
 
 namespace darussalambd.ViewModels
 {
@@ -49,9 +52,23 @@ namespace darussalambd.ViewModels
             set { SetProperty(ref _price, value); }
         }
 
-        public BookDetailsViewModel()
-        {
+        INavigationService _navigationService;
 
+        public DelegateCommand AddToCartCommand { protected set; get; }
+
+        IEventAggregator _ea;
+
+        public BookDetailsViewModel(INavigationService navigationService, IEventAggregator ea)
+        {
+            _ea = ea;
+            _navigationService = navigationService;
+            AddToCartCommand = new DelegateCommand(OnAddToCartCommand);
+        }
+
+        private void OnAddToCartCommand()
+        {
+           // _ea.GetEvent<MyEvent>().Publish("hello");
+            _navigationService.GoBackAsync();
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)

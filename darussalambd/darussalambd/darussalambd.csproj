@@ -44,6 +44,7 @@
     <Compile Include="Services\BookServices.cs" />
     <Compile Include="Services\LoginServices.cs" />
     <Compile Include="ViewModels\BookDetailsViewModel.cs" />
+    <Compile Include="ViewModels\CartDetailsViewModel.cs" />
     <Compile Include="ViewModels\KarimBooksViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
   </ItemGroup>
@@ -63,6 +64,9 @@
     </EmbeddedResource>
     <Compile Include="Views\BookDetails.xaml.cs">
       <DependentUpon>BookDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CartDetails.xaml.cs">
+      <DependentUpon>CartDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\KarimBooks.xaml.cs">
       <DependentUpon>KarimBooks.xaml</DependentUpon>
@@ -132,6 +136,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\BookDetails.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CartDetails.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
