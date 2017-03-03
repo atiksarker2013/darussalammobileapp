@@ -3,7 +3,8 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Events;
-
+using darussalambd.Models;
+using darussalambd.Services;
 
 namespace darussalambd.ViewModels
 {
@@ -52,6 +53,26 @@ namespace darussalambd.ViewModels
             set { SetProperty(ref _price, value); }
         }
 
+        private int _orderQty;
+        public int OrderQty
+        {
+            get { return _orderQty; }
+            set { SetProperty(ref _orderQty, value); }
+        }
+
+
+
+        private tbl_DarussalamMobileCart _selectedMobileCart;
+        public tbl_DarussalamMobileCart SelectedMobileCart
+        {
+            get { return _selectedMobileCart; }
+            set { SetProperty(ref _selectedMobileCart, value); }
+        }
+
+
+
+        
+
         INavigationService _navigationService;
 
         public DelegateCommand AddToCartCommand { protected set; get; }
@@ -63,11 +84,29 @@ namespace darussalambd.ViewModels
             _ea = ea;
             _navigationService = navigationService;
             AddToCartCommand = new DelegateCommand(OnAddToCartCommand);
+
         }
 
         private void OnAddToCartCommand()
         {
-           // _ea.GetEvent<MyEvent>().Publish("hello");
+            SelectedMobileCart = new tbl_DarussalamMobileCart();
+            SelectedMobileCart.BookId = BookId;
+            SelectedMobileCart.CUstomerId = AppGlobalVar.CustomerId;
+            SelectedMobileCart.OrderId = AppGlobalVar.OrderId;
+            SelectedMobileCart.BookName = Title;
+            SelectedMobileCart.Price = Price;
+            SelectedMobileCart.Qty = OrderQty;
+            SelectedMobileCart.UnitTotal = Price * OrderQty;
+            SelectedMobileCart.SubmitStatus = false;
+            SelectedMobileCart.ProcessStatus = false;
+            SelectedMobileCart.EntryDate = DateTime.Now;
+
+            var _cartService = new CartService();
+            string cont = "tbl_DarussalamMobileCart";
+             _cartService.PostCartAsync(SelectedMobileCart, cont);
+            App.Current.MainPage.DisplayAlert("Cart", "Item added on your cart.", "OK");
+
+            // _ea.GetEvent<MyEvent>().Publish("hello");
             _navigationService.GoBackAsync();
         }
 
@@ -85,6 +124,8 @@ namespace darussalambd.ViewModels
             Publisher = (string)parameters["publisher"];
             Description = (string)parameters["description"];
             Price = (decimal)parameters["price"];
+
+            OrderQty = 1;
 
         }
     }

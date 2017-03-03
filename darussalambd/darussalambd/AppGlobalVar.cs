@@ -8,6 +8,7 @@ namespace darussalambd
 {
    public static class AppGlobalVar  
     {
-
+        public static string OrderId { get; set; }
+        public static int CustomerId { get; set; }
     }
 }

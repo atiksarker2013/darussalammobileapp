@@ -80,7 +80,7 @@
       />
                 <Entry
           x:Name="Qty"
-          Text="1"
+          Text="{Binding OrderQty}"
           Keyboard="Numeric"
           WidthRequest="50"
           BackgroundColor="#DBDBDB"

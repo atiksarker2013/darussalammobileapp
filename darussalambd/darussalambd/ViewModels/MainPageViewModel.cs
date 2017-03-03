@@ -131,6 +131,8 @@ namespace darussalambd.ViewModels
             {
              //   _navigationService = new 
                 _navigationService.NavigateAsync("KarimBooks");
+                AppGlobalVar.CustomerId = item.Id;
+                AppGlobalVar.OrderId = Guid.NewGuid().ToString();
             }
 
            // _navigationService.NavigateAsync("KarimBooks");
