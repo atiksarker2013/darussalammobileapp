@@ -5,25 +5,61 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     prism:ViewModelLocator.AutowireViewModel="True">
+
+ 
+   
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+           
+            <RowDefinition Height="40" />
             <RowDefinition Height="5" />
             <RowDefinition Height="40" />
             <RowDefinition Height="5" />
             <RowDefinition Height="*" />
             
         </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0"
+        Grid.Column="0" Orientation="Horizontal"  >
+            <Button 
+        Text="Checkout"
+        Command="{Binding CheckoutCommand}"
+        Image="cart.png"
+                 BackgroundColor="Transparent"
+                 BorderColor="Maroon"
+                BorderRadius="50"
+                BorderWidth="1"
+                  TextColor="Maroon"
+                VerticalOptions="Center"/>
+            <!--<Button 
+        Text="Profile"
+        Command="{Binding AddToCartCommand}"
+        Image="profile.png"
+                 BackgroundColor="Transparent"
+                 BorderColor="Maroon"
+                BorderRadius="50"
+                BorderWidth="1"
+                  TextColor="Maroon"
+                VerticalOptions="Center"/>-->
+
+        </StackLayout>
+
+       
+
+
+
         <SearchBar Text="{Binding SearchText}"
-                     Grid.Row="1"
+                     Grid.Row="2"
                      Grid.Column="0"
                      SearchCommand="{Binding SearchCommand}"/>
 
 
         <ListView
-         Grid.Row="3"
+         Grid.Row="4"
                 Grid.Column="0"
         x:Name="booklistview"
         ItemsSource="{Binding Path=SelectedBookList}"

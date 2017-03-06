@@ -27,6 +27,17 @@ namespace Plugin.RestClient
             return taskModels;
         }
 
+        //public async Task<List<T>> GetAsync(string url)
+        //{
+        //    var httpClient = new HttpClient();
+
+        //    var json = await httpClient.GetAsync(WebServiceUrl + url);
+
+        //    var taskModels = JsonConvert.DeserializeObject<List<T>>(json);
+
+        //    return taskModels;
+        //}
+
         //internal Task PostAsync(string url)
         //{
         //    throw new NotImplementedException();
@@ -61,6 +72,23 @@ namespace Plugin.RestClient
 
             return result.IsSuccessStatusCode;
         }
+
+        //public async Task<bool> PutAsync(string id, T t, string url)
+        //{
+        //    var httpClient = new HttpClient();
+
+        //    var json = JsonConvert.SerializeObject(t);
+
+        //    HttpContent httpContent = new StringContent(json);
+
+        //    httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+        //    var result = await httpClient.PutAsync(WebServiceUrl + id, httpContent);
+
+        //    return result.IsSuccessStatusCode;
+        //}
+
+
 
         public async Task<bool> DeleteAsync(int id, T t)
         {

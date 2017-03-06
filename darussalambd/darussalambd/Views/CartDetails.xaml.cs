@@ -7,6 +7,7 @@ namespace darussalambd.Views
         public CartDetails()
         {
             InitializeComponent();
+            this.BackgroundImage = "background.png";
         }
     }
 }

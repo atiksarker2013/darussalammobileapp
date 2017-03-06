@@ -4,24 +4,36 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="darussalambd.Views.CartDetails">
-    <!--<StackLayout>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
 
-        <ListView x:Name="cart" RowHeight="60">
+            <RowDefinition Height="*" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="5" />
+        
+
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="cart" RowHeight="60"  ItemsSource="{Binding Path=SelectedBookList}"  Grid.Row="0"
+                Grid.Column="0">
             <ListView.ItemTemplate >
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout  Orientation="Vertical" Padding="2" VerticalOptions="Fill" HorizontalOptions="End">
-
                             <StackLayout Orientation="Horizontal"  BackgroundColor="Black" >
-                                <Image Source="{Binding Image}"
-                HeightRequest="50"
+                                <!--<Image Source="{Binding Image}"
+                       HeightRequest="50"
                        WidthRequest="50"
-              />
+              />-->
                                 <StackLayout Orientation="Horizontal" BackgroundColor="Blue"  >
                                     <StackLayout Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="End" BackgroundColor="Red">
 
                                         <Label
-                      Text="{Binding Name}"
+                      Text="{Binding BookName}"
                        FontSize="Small"
                 />
                                         <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="End">
@@ -44,7 +56,7 @@
 
 
                                             <Label
-                      Text="{Binding Total}"
+                      Text="{Binding UnitTotal}"
                       VerticalOptions="End"
                       HorizontalOptions="End"
                       FontSize="20"
@@ -61,10 +73,11 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackLayout Orientation="Horizontal" BackgroundColor="White" Padding="10" HorizontalOptions="End" VerticalOptions="Center">
+
+
+        <StackLayout Orientation="Horizontal" BackgroundColor="White" Padding="10" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="2" Grid.Column="0">
             <Label  Text="Grand Total" FontSize="Micro" TextColor="Maroon"/>
             <Label x:Name="total" FontSize="Small" TextColor="Black"/>
         </StackLayout>
-        --><!--<Button Text="Pay Now" Clicked="pay_btn_Clicked"/>--><!--
-    </StackLayout>-->
+    </Grid>
 </ContentPage>

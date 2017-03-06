@@ -96,14 +96,16 @@ namespace darussalambd.ViewModels
 
 
         public ICommand SearchCommand { protected set; get; }
+        public ICommand CheckoutCommand { protected set; get; }
 
-      
+
 
         public KarimBooksViewModel(INavigationService navigationService, IEventAggregator ea)
         {
 
             _navigationService = navigationService;
             SearchCommand = new DelegateCommand(OnSearchCommand);
+            CheckoutCommand = new DelegateCommand(OnCheckoutCommand);
             LoadAllBookAsyn();
         }
 
@@ -118,6 +120,11 @@ namespace darussalambd.ViewModels
         private void OnSearchCommand()
         {
           //  throw new NotImplementedException();
+        }
+
+        private void OnCheckoutCommand()
+        {
+            _navigationService.NavigateAsync("CartDetails");
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)

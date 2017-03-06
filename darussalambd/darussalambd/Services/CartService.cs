@@ -21,5 +21,17 @@ namespace darussalambd.Services
             var user = await restClient.PostAsync(_object, url);
             // return item;
         }
+
+
+        //public async Task<List<Models.tbl_DarussalamMobileCart>> PutAsync(string id, tbl_DarussalamMobileCart obj, string url)
+        //{
+        // //   tbl_DarussalamMobileCart obj = new
+
+        //    RestClient<Models.tbl_DarussalamMobileCart> restClient = new Plugin.RestClient.RestClient<Models.tbl_DarussalamMobileCart>();
+        //    var userList = await restClient.PutAsync(id, obj,url);
+        //    return userList;
+        //}
+
+
     }
 }
