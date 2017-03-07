@@ -18,7 +18,7 @@
 
         </Grid.RowDefinitions>
 
-        <ListView x:Name="cart" RowHeight="60"  ItemsSource="{Binding Path=SelectedBookList}"  Grid.Row="0"
+        <ListView x:Name="cart" RowHeight="100"  ItemsSource="{Binding Path=SelectedBookList}"  Grid.Row="0"
                 Grid.Column="0">
             <ListView.ItemTemplate >
                 <DataTemplate>
