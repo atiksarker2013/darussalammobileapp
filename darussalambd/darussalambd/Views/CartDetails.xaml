@@ -18,7 +18,7 @@
 
         </Grid.RowDefinitions>
 
-        <ListView x:Name="cart" RowHeight="100"  ItemsSource="{Binding Path=SelectedBookList}"  Grid.Row="0"
+        <ListView x:Name="cart" RowHeight="55"  ItemsSource="{Binding Path=SelectedBookList}"  Grid.Row="0"
                 Grid.Column="0">
             <ListView.ItemTemplate >
                 <DataTemplate>
@@ -29,7 +29,7 @@
                        HeightRequest="50"
                        WidthRequest="50"
               />-->
-                                <StackLayout Orientation="Horizontal" BackgroundColor="Blue"  >
+                                <!--<StackLayout Orientation="Horizontal" BackgroundColor="Blue"  >-->
                                     <StackLayout Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="End" BackgroundColor="Red">
 
                                         <Label
@@ -43,11 +43,29 @@
                            VerticalOptions="End" HorizontalOptions="End"
                 />
 
+                                        <Label
+                        Text="x"
+                        FontSize="Small"
+                        
+                        HorizontalTextAlignment="End"
+                        VerticalOptions="End"
+                        HorizontalOptions="End"
+            />
 
-                                            <Label
+
+                                        <Label
                         Text="{Binding Qty}"
                         FontSize="Small"
-                        WidthRequest="60"
+                        
+                        HorizontalTextAlignment="End"
+                        VerticalOptions="End"
+                        HorizontalOptions="End"
+            />
+
+                                        <Label
+                        Text="="
+                        FontSize="Small"
+                        
                         HorizontalTextAlignment="End"
                         VerticalOptions="End"
                         HorizontalOptions="End"
@@ -55,17 +73,18 @@
 
 
 
-                                            <Label
+
+                                        <Label
                       Text="{Binding UnitTotal}"
                       VerticalOptions="End"
                       HorizontalOptions="End"
-                      FontSize="20"
-                      WidthRequest="60"
+                      FontSize="16"
+                     
                       HorizontalTextAlignment="End"
             />
                                         </StackLayout>
                                     </StackLayout>
-                                </StackLayout>
+                                <!--</StackLayout>-->
                             </StackLayout>
 
                         </StackLayout>
